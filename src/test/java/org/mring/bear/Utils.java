@@ -25,11 +25,10 @@ public class Utils {
 
     static List<Bear> dataBearsProviderPositive() {
         List<Bear> bearList = new ArrayList() {{
-            add(Utils.createBear("Bear_1", "11", BearTypes.POLAR.toString()));
-            add(Utils.createBear("Bear_2", "11", BearTypes.BROWN.toString()));
-            add(Utils.createBear("Bear_3", "11", BearTypes.GUMMY.toString()));
-            add(Utils.createBear("Bear_4", "0", BearTypes.BLACK.toString()));
-            add(Utils.createBear("Bear_5", "0.01", "green"));
+            add(Utils.createBear("Bear_1", "0.5", BearTypes.POLAR.toString()));
+            add(Utils.createBear("Bear_2", "1", BearTypes.BROWN.toString()));
+            add(Utils.createBear("Bear_3", "9.5", BearTypes.GUMMY.toString()));
+            add(Utils.createBear("Bear_4", "10", BearTypes.BLACK.toString()));
         }};
         return bearList;
     }
@@ -38,6 +37,8 @@ public class Utils {
         List<Bear> bearList = new ArrayList() {{
             add(Utils.createBear("Bear_3", null, BearTypes.BROWN.toString()));
             add(Utils.createBear("Bear_4", "-1", BearTypes.POLAR.toString()));
+            add(Utils.createBear("Bear_5", "0.01", "green"));
+            add(Utils.createBear(null, "0.01", null));
         }};
         return bearList;
     }
