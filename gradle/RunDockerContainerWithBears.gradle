@@ -1,0 +1,28 @@
+
+task bearTestService(type: Test) {
+  group = "test"
+}
+
+dockerRun {
+  name 'bear_container'
+  image "daverchenkov/bears:1.0"
+  ports '8091:8091'
+}
+
+def checkSocket() {
+  try {
+    new Socket("${project.property("docker.host")}", 8091)
+    return true
+  } catch (Exception e) {
+    return false
+  }
+}
+
+
+
+tasks.dockerRun.onlyIf({ !checkSocket() })
+
+tasks.dockerRemoveContainer.dependsOn(tasks.dockerStop)
+tasks.bearTestService.dependsOn(tasks.dockerRun)
+tasks.test.finalizedBy(tasks.dockerRemoveContainer)
+tasks.test.dependsOn(bearTestService)
