@@ -60,8 +60,8 @@ class PositiveTests {
                 .post("/bear")
                 .then()
                 .statusCode(describedAs(
-                        String.format("Status should be 200 for bear : name = %s, age = %s, type = %s",
-                                bear.getBear_name(), bear.getBear_age(), bear.getBear_type()), is(200))
+                        String.format("Status should be 201 for bear : name = %s, age = %s, type = %s",
+                                bear.getBear_name(), bear.getBear_age(), bear.getBear_type()), is(201))
                 );
     }
 
@@ -76,7 +76,7 @@ class PositiveTests {
                 .body(bear)
                 .post("/bear")
                 .then()
-                .statusCode(200)
+                .statusCode(201)
                 .extract()
                 .body()
                 .asString();
@@ -106,14 +106,14 @@ class PositiveTests {
                 .body(Utils.createBear("Bear_delete1", "11", BearTypes.POLAR.toString()))
                 .post("/bear")
                 .then()
-                .statusCode(200);
+                .statusCode(201);
 
         given()
                 .contentType(ContentType.JSON)
                 .body(Utils.createBear("Bear_delete2", "11", BearTypes.POLAR.toString()))
                 .post("/bear")
                 .then()
-                .statusCode(200);
+                .statusCode(201);
 
         given()
                 .contentType(ContentType.JSON)
@@ -145,14 +145,14 @@ class PositiveTests {
                 .body(Utils.createBear("Bear_count1", "11", BearTypes.POLAR.toString()))
                 .post("/bear")
                 .then()
-                .statusCode(200);
+                .statusCode(201);
 
         given()
                 .contentType(ContentType.JSON)
                 .body(Utils.createBear("Bear_count1", "11", BearTypes.POLAR.toString()))
                 .post("/bear")
                 .then()
-                .statusCode(200);
+                .statusCode(201);
 
         String response = given()
                 .contentType(ContentType.JSON)
@@ -180,7 +180,7 @@ class PositiveTests {
                 .body(Utils.createBear("Bear_count1", "11", BearTypes.POLAR.toString()))
                 .post("/bear")
                 .then()
-                .statusCode(200)
+                .statusCode(201)
                 .extract()
                 .body()
                 .asString();
@@ -217,7 +217,7 @@ class PositiveTests {
                 .body(Utils.createBear("Bear_old", "1", BearTypes.POLAR.toString()))
                 .post("/bear")
                 .then()
-                .statusCode(200)
+                .statusCode(201)
                 .extract()
                 .body()
                 .asString();
